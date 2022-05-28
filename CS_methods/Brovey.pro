@@ -1,15 +1,10 @@
 
-cd, 'C:\Users\pmans\Documents\Magistrale\Remote Sensing\Progetto\PAirMax\GE_Lond_Urb\RR'
-
-
 ; Load Images
-PAN = read_TIFF('PAN.tif')
+PAN = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\PAN.tif')
 PAN = float(PAN)
-MS = read_TIFF('MS.tif', R, G, B, channels=[0,1,2,3])
+MS = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS.tif')
 MS = float(MS)
-GroundTruth = read_image('GT.tif')
-
-cd, 'C:\Users\pmans\Documents\Magistrale\Remote Sensing\Esercizi\Pansharpen'
+GroundTruth = read_image('.\PAirMax\GE_Lond_Urb\RR\GT.tif')
 
 ; Brovey:
 ;         I = Media(MS)
@@ -57,7 +52,7 @@ D = reform(D, 1, 512, 512)
 NEW_MS = [scale(R*D), scale(G*D), scale(B*D), scale(NIR*D)]
 
 ;Construct the full path with filename.
-fwrite=DIALOG_PICKFILE() 
+;fwrite=DIALOG_PICKFILE() 
  ;Write the array to the file. This file will have the png format.
-WRITE_tiff,fwrite,NEW_MS
+WRITE_tiff,".\output\Brovey.tif",NEW_MS
 
