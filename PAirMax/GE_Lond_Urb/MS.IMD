@@ -1,0 +1,187 @@
+version = "28.3";
+generationTime = 2020-10-29T20:05:57.000000Z;
+productOrderId = "013280210040_01_P001";
+productCatalogId = "A010010664170900";
+childCatalogId = "2070010664170800";
+imageDescriptor = "OrthoRectified3";
+productScale = "1:12,000";
+productAccuracy = 10.16;
+RMSE2D =  6.18;
+bandId = "Multi";
+panSharpenAlgorithm = "None";
+numRows = 4387;
+numColumns = 9736;
+productLevel = "LV3D";
+productType = "Ortho";
+numberOfLooks = 1;
+radiometricLevel = "Corrected";
+radiometricEnhancement = "Off";
+bitsPerPixel = 16;
+compressionType = "None";
+BEGIN_GROUP = BAND_B
+	ULLon =   -0.18333622;
+	ULLat =   51.54715235;
+	ULHAE =    97.00;
+	URLon =    0.07462688;
+	URLat =   51.54067093;
+	URHAE =    53.93;
+	LRLon =    0.06974959;
+	LRLat =   51.46820998;
+	LRHAE =   171.00;
+	LLLon =   -0.18780567;
+	LLLat =   51.47467470;
+	LLHAE =    52.60;
+	absCalFactor = 5.025000e-03;
+	effectiveBandwidth = 6.000000e-02;
+	TDILevel = 18;
+END_GROUP = BAND_B
+BEGIN_GROUP = BAND_G
+	ULLon =   -0.18333622;
+	ULLat =   51.54715235;
+	ULHAE =    97.00;
+	URLon =    0.07462688;
+	URLat =   51.54067093;
+	URHAE =    53.93;
+	LRLon =    0.06974959;
+	LRLat =   51.46820998;
+	LRHAE =   171.00;
+	LLLon =   -0.18780567;
+	LLLat =   51.47467470;
+	LLHAE =    52.60;
+	absCalFactor = 4.088700e-03;
+	effectiveBandwidth = 7.000000e-02;
+	TDILevel = 18;
+END_GROUP = BAND_G
+BEGIN_GROUP = BAND_R
+	ULLon =   -0.18333622;
+	ULLat =   51.54715235;
+	ULHAE =    97.00;
+	URLon =    0.07462688;
+	URLat =   51.54067093;
+	URHAE =    53.93;
+	LRLon =    0.06974959;
+	LRLat =   51.46820998;
+	LRHAE =   171.00;
+	LLLon =   -0.18780567;
+	LLLat =   51.47467470;
+	LLHAE =    52.60;
+	absCalFactor = 3.198650e-03;
+	effectiveBandwidth = 3.500000e-02;
+	TDILevel = 18;
+END_GROUP = BAND_R
+BEGIN_GROUP = BAND_N
+	ULLon =   -0.18333622;
+	ULLat =   51.54715235;
+	ULHAE =    97.00;
+	URLon =    0.07462688;
+	URLat =   51.54067093;
+	URHAE =    53.93;
+	LRLon =    0.06974959;
+	LRLat =   51.46820998;
+	LRHAE =   171.00;
+	LLLon =   -0.18780567;
+	LLLat =   51.47467470;
+	LLHAE =    52.60;
+	absCalFactor = 4.608800e-03;
+	effectiveBandwidth = 1.400000e-01;
+	TDILevel = 18;
+END_GROUP = BAND_N
+outputFormat = "GeoTIFF";
+BEGIN_GROUP = IMAGE_1
+	satId = "GE01";
+	mode = "FullSwath";
+	scanDirection = "Reverse";
+	CatId = "105005007EDD7100";
+	firstLineTime = 2019-11-29T10:57:46.285563Z;
+	avgLineRate = 2500.02;
+	exposureDuration = 0.00040000;
+	minCollectedRowGSD =   1.778;
+	maxCollectedRowGSD =   1.788;
+	meanCollectedRowGSD =   1.781;
+	minCollectedColGSD =   1.883;
+	maxCollectedColGSD =   1.887;
+	meanCollectedColGSD =   1.885;
+	meanCollectedGSD =   1.832;
+	rowUncertainty =    4.41;
+	colUncertainty =   10.89;
+	minSunAz = 167.7;
+	maxSunAz = 167.7;
+	meanSunAz = 167.7;
+	minSunEl =  16.3;
+	maxSunEl =  16.4;
+	meanSunEl =  16.4;
+	minSatAz = 106.4;
+	maxSatAz = 109.3;
+	meanSatAz = 107.4;
+	minSatEl =  69.3;
+	maxSatEl =  69.3;
+	meanSatEl =  69.3;
+	minInTrackViewAngle =  -3.0;
+	maxInTrackViewAngle =  -1.4;
+	meanInTrackViewAngle =  -2.0;
+	minCrossTrackViewAngle =  18.4;
+	maxCrossTrackViewAngle =  18.4;
+	meanCrossTrackViewAngle =  18.4;
+	minOffNadirViewAngle =  18.4;
+	maxOffNadirViewAngle =  18.6;
+	meanOffNadirViewAngle =  18.5;
+	PNIIRS = 3.0;
+	cloudCover = 0.000;
+	resamplingKernel = "MTF";
+	positionKnowledgeSrc = "R";
+	attitudeKnowledgeSrc = "R";
+	revNumber = 60012;
+END_GROUP = IMAGE_1
+BEGIN_GROUP = MAP_PROJECTED_PRODUCT
+	earliestAcqTime = 2019-11-29T10:57:48.335415Z;
+	latestAcqTime = 2019-11-29T10:57:48.335415Z;
+	datumName = "WE";
+	semiMajorAxis = 6378137.0000;
+	inverseFlattening = 298.257223563;
+	datumOffset = (
+	     0.000,
+	     0.000,
+	     0.000 );
+	mapProjName = "UTM";
+	mapProjCode = 1;
+	mapZone = 30;
+	mapHemi = "N";
+	mapProjParam = (
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000,
+	  0.000000000 );
+	productUnits = "M";
+	originX =     695292.76024113;
+	originY =    5714433.71999910;
+	orientationAngle =    0.0;
+	colSpacing =  1.84;
+	rowSpacing =  1.84;
+	productGSD =  1.84;
+	ULX =     695292.76024113;
+	ULY =    5714433.71999910;
+	ULH =         97.00;
+	URX =     713205.16044541;
+	URY =    5714433.72000095;
+	URH =         53.93;
+	LRX =     713205.16044050;
+	LRY =    5706363.48000088;
+	LRH =        171.00;
+	LLX =     695292.76023847;
+	LLY =    5706363.47999908;
+	LLH =         52.60;
+	DEMCorrection = "Fine DEM";
+	numGCP = 0;
+END_GROUP = MAP_PROJECTED_PRODUCT
+END;
