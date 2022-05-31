@@ -22,6 +22,7 @@ ratio = 4
 ; Calcolo di I_L
   ; 1) Ottenere PAN Smoothed con filtro gaussiano
   PAN_smooth = gauss_smooth(PAN, 3.3027, KERNEL=kernel, WIDTH=41, /EDGE_MIRROR)
+  save_image, ".\output\smooth.tif",PAN_smooth
   
   PAN_smooth2= convol(PAN, kernel, /Edge_Mirror)
   ; 2) Calcolo coefficienti w_k come minimizzazione MSE PAN e PAN_GAUSS
@@ -54,5 +55,5 @@ NEW_MS = [scale(R*D), scale(G*D), scale(B*D), scale(NIR*D)]
 ;Construct the full path with filename.
 ;fwrite=DIALOG_PICKFILE() 
  ;Write the array to the file. This file will have the png format.
-WRITE_tiff,".\output\Brovey.tif",NEW_MS
+save_image,".\output\Brovey.tif",NEW_MS
 

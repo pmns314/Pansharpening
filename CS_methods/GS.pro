@@ -1,11 +1,10 @@
+pro GS, PAN, MS, I_GS 
+
 ; Gram Schmidt 
 ; 
-; ; Load Images
-PAN = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\PAN.tif')
+
 PAN = double(PAN)
-MS = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS.tif')
 MS = double(MS)
-GroundTruth = read_image('.\PAirMax\GE_Lond_Urb\RR\GT.tif')
 sizes = size(MS, /dimensions)
 channels = sizes[0]
 
@@ -14,15 +13,15 @@ channels = sizes[0]
 ; outk = MSk + cov(MSk, I_L)/var(I_L) * (P_i - I_L)
 
 ; Rimozione media
-MS_no_mean = remove_mean(MS) ; Correct
+MS_no_mean = remove_mean(MS) 
 
 ; Calcolo I_L
-  I_L = mean(MS, Dimension=1) ; CORRECT
-  I_L_no_mean = I_L - mean(I_L) ; Correct
+  I_L = mean(MS, Dimension=1) 
+  I_L_no_mean = I_L - mean(I_L) 
 
 
 ; Calcolo P_i
-  P_i = histogram_matching(PAN, PAN, I_L_no_mean) ; Correct
+  P_i = histogram_matching(PAN, PAN, I_L_no_mean)
 
 
 ; Calcolo coefficienti 
@@ -31,21 +30,15 @@ for i=0,channels-1 do coeff[i,*,*] =$
    correlate(I_L_no_mean, MS_no_mean[i,*,*], /COVARIANCE)/ $
    variance(I_L_no_mean)
 
-
-; ???
-delta = P_i - I_L_no_mean ; Correct
-save_image, ".\output\delta.tif", delta
+; Fusion
+delta = P_i - I_L_no_mean 
 
 details = fltarr(sizes)
-for i=0, channels-1 do $
-   details[i,*,*]= coeff[i]*delta
-save_image, ".\output\details.tif", details
+for i=0, channels-1 do details[i,*,*]= coeff[i]*delta
 
-new_MS = MS + details
-save_image, ".\output\new_MS.tif", new_MS
-for i=0, channels-1 do $
-  new_MS[i,*,*] =scale(new_MS[i,*,*] - mean(new_MS[i,*,*])+mean(MS[i,*,*]))
+I_GS = MS + details
 
+; Normalization Fused Data
+for i=0, channels-1 do I_GS[i,*,*] =I_GS[i,*,*] - mean(I_GS[i,*,*])+mean(MS[i,*,*])
 
-;Write the array to the file. This file will have the png format.
-WRITE_tiff,".\output\GS.tif",NEW_MS, /double
+end
