@@ -89,4 +89,17 @@ h = make_array(size_MS[0], size_MS[1], size_MS[2], /FLOAT, VALUE = 0)
 for i=0,channels-1 do h[i,*,*] = I_Fus_GSA[i,*,*]
 for i=0,channels-1 do I_Fus_GSA[i,*,*] = h[i,*,*] - mean(h[i,*,*]) + mean(imageLR[i,*,*])
 
-write_image, 'C:\Users\carbo\OneDrive\Desktop\Università\Magistrale\Secondo anno\Secondo Semestre\Remote Sensing\Progetto\Pansharpening\output\GSA.png', 'png', I_fus_GSA
+;; SAVE PANSHARPENED IMAGE
+;R = I_Fus_GSA[0,*,*]
+;G = I_Fus_GSA[1,*,*]
+;B = I_Fus_GSA[2,*,*]
+;N = I_Fus_GSA[3,*,*]
+;red = 255 * ((R - min(R))/(max(R)-min(R)))
+;green = 255 * ((G - min(G))/(max(G)-min(G)))
+;blue = 255 * ((B - min(B))/(max(B)-min(B)))
+;nir = 255 * ((N - min(N))/(max(N)-min(N)))
+;I_Fus_GSA[0,*,*] = red
+;I_Fus_GSA[1,*,*] = green 
+;I_Fus_GSA[2,*,*] = blue
+;I_Fus_GSA[3,*,*] = nir
+write_tiff, 'C:\Users\carbo\OneDrive\Desktop\Università\Magistrale\Secondo anno\Secondo Semestre\Remote Sensing\Progetto\Pansharpening\output\GSA.tif', I_Fus_GSA
