@@ -1,59 +1,74 @@
-
-; Load Images
-PAN = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\PAN.tif')
-PAN = float(PAN)
-MS = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS.tif')
-MS = float(MS)
-GroundTruth = read_image('.\PAirMax\GE_Lond_Urb\RR\GT.tif')
-
+pro Brovey, PAN, MS, BT, RATIO=ratio, HAZE=haze
 ; Brovey:
 ;         I = Media(MS)
 ;         D = PAN - I
 ;         G = MS/ I
 ;         out = MS + D * G --> out = MS * PAN / I
 
-R = MS(0,*,*)
-G = MS(1,*,*)
-B = MS(2,*,*)
-NIR = MS(3,*,*)
-sizes = size(PAN, /dimensions)
-ratio = 4
+; Brovey with Haze Correction:
+;         I = Media(MS)
+;         D = PAN - I
+;         G = MS/ I
+;         out = MS + D * G --> out = MS * PAN / I
 
-; Calcolo di I_L
-  ; 1) Ottenere PAN Smoothed con filtro gaussiano
-  PAN_smooth = gauss_smooth(PAN, 3.3027, KERNEL=kernel, WIDTH=41, /EDGE_MIRROR)
-  save_image, ".\output\smooth.tif",PAN_smooth
+; --------- Initialisation workspace -------------------------
+MS = float(MS)
+PAN = float(PAN)
+sizes = size(PAN, /dimensions)
+sizes_MS = size(MS, /dimensions)
+channels = sizes_MS[0]
+if not KEYWORD_SET(RATIO) then ratio=4
+
+
+print, ratio
+;-----  Haze Correction --------------------------------------
+L = fltarr(sizes_MS)
+if KEYWORD_SET(HAZE) then begin
+  l_k = [0.95*cgPercentiles(MS[0,*,*], Percentiles=.01),$
+    0.45*cgPercentiles(MS[1,*,*], Percentiles=.01),$
+    0.40*cgPercentiles(MS[2,*,*], Percentiles=.01),$
+    0.05*cgPercentiles(MS[3,*,*], Percentiles=.01)]
   
-  PAN_smooth2= convol(PAN, kernel, /Edge_Mirror)
+  for i=0,channels-1 do L[i,*,*] = replicate(l_k[i], [1, sizes])
+endif
+
+; -------- Calcolo di I_L ------------------------------------------------------
+  ; 1) Ottenere PAN Smoothed con filtro gaussiano a frequenza di taglio 0.3
+  GNyq = .3
+  N = 41
+  fcut = 1./ratio
+  st_dev = sqrt((N*(fcut/2))^2/(-2*alog(GNyq)))
+  PAN_smooth = gauss_smooth(PAN, st_dev, KERNEL=kernel, WIDTH=N, /EDGE_Truncate)
+  
+
   ; 2) Calcolo coefficienti w_k come minimizzazione MSE PAN e PAN_GAUSS
   num_elements = sizes[0] * sizes[1]
   PAN_flatten = reform(PAN_smooth, 1, num_elements)
   MS_flatten = reform(MS, 4, num_elements)
   w_k = LA_LEAST_SQUARES(MS_flatten, PAN_flatten)
-  print, w_k
-  ; 3) Media Pesata di MS con pesi w_k
-  W_r = replicate(w_k[0], [1, sizes])
-  W_g = replicate(w_k[1], [1, sizes])
-  W_b = replicate(w_k[2], [1, sizes])
-  W_nir = replicate(w_k[3], [1, sizes])
-  W = [W_r, W_g, W_b, W_nir]
-  I_L = total(MS * W, 1)
   
-; Calcolo di P_i:
+  ; 3) Media Pesata di MS con pesi w_k
+  W = fltarr(sizes_MS)
+  for i=0,channels-1 do W[i,*,*] = replicate(w_k[i], [1, sizes])
+  
+  
+  I_L = total((MS-L) * W, 1) ;
+  
+; ----------  Calcolo di P_i: --------------------------
   ; Histogram Matching di P su I_L
-  sigma_P = stddev(PAN_SMOOTH)
-  mu_P = mean(PAN_SMOOTH)
-  sigma_I = stddev(I_L)
-  mu_I = mean(I_L)
-  P_i = (PAN - mu_P) * (sigma_I/sigma_P) + mu_I
+  P_i = histogram_matching(PAN, Pan_smooth, I_L)
+
+
+
+; --------- Fusion -------------------------
+I_MS_L = MS - L;
 
 
 D = P_I / I_L
 D = reform(D, 1, 512, 512)
-NEW_MS = [scale(R*D), scale(G*D), scale(B*D), scale(NIR*D)]
 
-;Construct the full path with filename.
-;fwrite=DIALOG_PICKFILE() 
- ;Write the array to the file. This file will have the png format.
-save_image,".\output\Brovey.tif",NEW_MS
+BT = fltarr(sizes_MS)
+for i = 0,channels-1 do BT[i,*,*] = I_MS_L[i,*,*] * D
+BT = BT + L
 
+end
