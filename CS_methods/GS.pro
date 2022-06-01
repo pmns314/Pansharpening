@@ -13,12 +13,11 @@ channels = sizes[0]
 ; outk = MSk + cov(MSk, I_L)/var(I_L) * (P_i - I_L)
 
 ; Rimozione media
-MS_no_mean = remove_mean(MS) 
+  MS_no_mean = remove_mean(MS) 
 
 ; Calcolo I_L
   I_L = mean(MS, Dimension=1) 
-  I_L_no_mean = I_L - mean(I_L) 
-
+  I_L_no_mean = remove_mean(I_L)
 
 ; Calcolo P_i
   P_i = histogram_matching(PAN, PAN, I_L_no_mean)
