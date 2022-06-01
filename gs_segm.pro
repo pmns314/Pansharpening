@@ -5,18 +5,19 @@ FUNCTION gs_segm, I_MS, I_PAN, I_LR_input, S
   
   ;I_MS = double(I_MS);
   I_MS = double(I_MS)
+  I_PAN = double(I_PAN)
   
   ;I_PAN = repmat(double(I_PAN), [1, 1, size(I_MS,3)]);
   size_I_MS = size(I_MS, /dimensions)
-  X = REFORM(double(I_PAN), 1, size_I_MS[1], size_I_MS[2])
+  X = REFORM(I_PAN, 1, size_I_MS[1], size_I_MS[2])
   I_PAN = [X, X, X, X]
   
   ;I_LR_input = double(I_LR_input);
   I_LR_input = double(I_LR_input)
   
   ;if size(I_LR_input, 3) == 1
-  size_I_LR = size(I_LR_input, /dimensions)
-  IF size_I_LR[0] EQ 1 THEN BEGIN ;TODO not sure if correct index
+  size_I_LR = size(I_LR_input)
+  IF size_I_LR[0] EQ 2 THEN BEGIN ;if the image has 1 channel, it means it has only two dimensions
   
     ;I_LR_input = repmat(I_LR_input, [1, 1, size(I_MS,3)]);
     X = REFORM(I_LR_input, 1, size_I_MS[1], size_I_MS[2])
@@ -25,8 +26,8 @@ FUNCTION gs_segm, I_MS, I_PAN, I_LR_input, S
   ENDIF
   
   ;if size(I_LR_input, 3) ~= size(I_PAN, 3)
-  size_I_PAN = size(I_PAN, /dimensions)
-  IF size_I_LR[0] NE size_I_PAN[0] THEN BEGIN
+  size_I_PAN = size(I_PAN)
+  IF size_I_LR[1] NE size_I_PAN[1] THEN BEGIN
   
     ;error('I_LP should have the same number of bands as PAN');
     PRINT, 'I_LP should have the same number of bands as PAN'
@@ -70,7 +71,7 @@ FUNCTION gs_segm, I_MS, I_PAN, I_LR_input, S
       c = CORRELATE(I_LR_Band[idx], MS_Band[idx], /covariance)
     
       ;Coeff_Band(idx) = c(1,2)/var(I_LR_Band(idx));
-      Coeff_Band[idx] = c[1,2]/VARIANCE(I_LR_BAND[idx])
+      Coeff_Band[where(idx)] = c / VARIANCE(I_LR_BAND[idx])
     ENDFOR
     
     ;Coeff(:,:,ii) = Coeff_Band;

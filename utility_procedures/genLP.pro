@@ -21,11 +21,6 @@ MS_flatten = reform(MS, 4, num_elements)
 
 w_k = LA_LEAST_SQUARES(MS_LR_Exp, PAN_LR_flatten)
 
-;;
-;alpha = repmat(alpha', [size(I_MS_col,1),1]);
-;I_LR_col = sum([I_MS_col, ones(size(I_MS_col,1),1)] .* alpha, 2);
-;I_LR_input = reshape(I_LR_col, Height, Width);
-;;
 alpha = fltarr(5, num_elements)
 for i=0,4 do alpha[i,*] = replicate(w_k[i], 1, num_elements)
 

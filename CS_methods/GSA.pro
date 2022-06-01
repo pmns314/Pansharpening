@@ -102,4 +102,4 @@ I_Fus_GSA[0,*,*] = red
 I_Fus_GSA[1,*,*] = green 
 I_Fus_GSA[2,*,*] = blue
 I_Fus_GSA[3,*,*] = nir
-write_tiff, 'C:\Users\carbo\OneDrive\Desktop\Università\Magistrale\Secondo anno\Secondo Semestre\Remote Sensing\Progetto\Pansharpening\output\GSA.tif', I_Fus_GSA
+save_image, "./output/GSA.tif", I_Fus_GSA
