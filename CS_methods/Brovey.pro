@@ -33,12 +33,7 @@ endif
 
 ; -------- Calcolo di I_L ------------------------------------------------------
   ; 1) Ottenere PAN Smoothed con filtro gaussiano a frequenza di taglio 0.3
-  GNyq = .3
-  N = 41
-  fcut = 1./ratio
-  st_dev = sqrt((N*(fcut/2))^2/(-2*alog(GNyq)))
-  PAN_smooth = gauss_smooth(PAN, st_dev, KERNEL=kernel, WIDTH=N, /EDGE_Truncate)
-  
+  PAN_smooth = gaussian_smoothing(PAN, ratio)
 
   ; 2) Calcolo coefficienti w_k come minimizzazione MSE PAN e PAN_GAUSS
   num_elements = sizes[0] * sizes[1]

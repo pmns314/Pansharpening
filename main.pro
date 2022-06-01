@@ -3,6 +3,7 @@
  ; Load Images
 PAN = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\PAN.tif')
 MS = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS.tif')
+MS_LR = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS_LR.tif')
 
 GroundTruth = read_image('.\PAirMax\GE_Lond_Urb\RR\GT.tif')
 
