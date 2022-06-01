@@ -52,7 +52,7 @@ PRO k_means_clustering, I_MS, n_segm
   ;  start = start + 1
   ;ENDFOR
   ;IDX = IMSL_K_MEANS(F1, F2, COUNTS_CLUSTER=n_segm)
-  F1 = transpose(F1)
+  ;F1 = transpose(F1)
   PRINT, "vor idx"
   weights = CLUST_WTS(F1, N_CLUSTERS = n_segm)
   IDX = CLUSTER(F1, weights, N_CLUSTERS = n_segm)
