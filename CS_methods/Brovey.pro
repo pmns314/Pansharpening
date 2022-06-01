@@ -20,7 +20,6 @@ channels = sizes_MS[0]
 if not KEYWORD_SET(RATIO) then ratio=4
 
 
-print, ratio
 ;-----  Haze Correction --------------------------------------
 L = fltarr(sizes_MS)
 if KEYWORD_SET(HAZE) then begin
