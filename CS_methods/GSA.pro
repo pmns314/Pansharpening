@@ -17,12 +17,14 @@ imageLR0 = remove_mean(imageLR)
 imageLR_LP0 = remove_mean(imageLR_LP)
 imageHR0 = remove_mean(imageHR)
 
-
 ; Use a low pass filter based on the wavelet transform for the PAN image and downsample it by ratio
 ratio = 4
 WT = wtn(imageHR0, ratio, /OVERWRITE)
-imageHR0 = wtn(WT, ratio, /INVERSE, /OVERWRITE)
-imageHR0 = congrid(imageHR0, size_PAN[0]/ratio, size_PAN[1]/ratio, /INTERP)
+smoothed = fltarr(size_PAN)
+smoothed[0:256, 0:256] = WT[0:256, 0:256]
+imageHR0 = wtn(smoothed, ratio, /INVERSE, /OVERWRITE)
+imageHR0 = congrid(imageHR0, size_PAN[0]/ratio, $
+size_PAN[1]/ratio, /INTERP)
 size_HR0 = size(imageHR0, /DIMENSIONS)
 save_image, "./output/wtn.tif", imageHR0
 
