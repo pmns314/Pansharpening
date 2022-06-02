@@ -9,8 +9,14 @@ FUNCTION gs_segm, I_MS, PAN, I_LR_input, S
   
   ;I_PAN = repmat(double(I_PAN), [1, 1, size(I_MS,3)]);
   size_I_MS = size(I_MS, /dimensions)
-  X = REFORM(PAN, 1, size_I_MS[1], size_I_MS[2])
-  I_PAN = [X, X, X, X]
+  channels = size_I_MS[0]
+  
+  X = REFORM(I_LR_input, 1, size_I_MS[1], size_I_MS[2])
+  temp = fltarr(size_I_MS)
+  for i=0,channels-1 do temp[i,*,*] = X
+  I_PAN = temp
+  
+
   
   ;I_LR_input = double(I_LR_input);
   I_LR_input = double(I_LR_input)
@@ -21,7 +27,9 @@ FUNCTION gs_segm, I_MS, PAN, I_LR_input, S
   
     ;I_LR_input = repmat(I_LR_input, [1, 1, size(I_MS,3)]);
     X = REFORM(I_LR_input, 1, size_I_MS[1], size_I_MS[2])
-    I_LR_input = [X, X, X, X]
+    temp = fltarr(size_I_MS)
+    for i=0,channels-1 do temp[i,*,*] = X
+    I_LR_input = temp
     
   ENDIF
   

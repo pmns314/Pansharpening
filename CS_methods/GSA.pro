@@ -39,6 +39,9 @@ size_conc = size(concatenation, /DIMENSIONS)
 ILRc = reform(concatenation, [size_conc[0], size_conc[1]*size_conc[2]])
 alpha[0,0,*] = la_least_squares(ILRc, IHc)
 
+
+
+
 ; Compute intensity
 one_matrix = make_array(size_MS[1], size_MS[2], /FLOAT, VALUE=1)
 concatenation = make_array(size_MS[1], size_MS[2], channels+1, /FLOAT, VALUE = 0)
