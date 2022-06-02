@@ -1,12 +1,13 @@
 ; Main Script
 ; 
  ; Load Images
-print, "Loading Image Files"
-PAN = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\PAN.tif')
-MS = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS.tif')
-MS_LR = read_TIFF('.\PAirMax\GE_Lond_Urb\RR\MS_LR.tif')
+folder = 'W2_Miam_Mix'
+print, "Loading Image Files: " + folder
+PAN = read_TIFF('.\PAirMax\'+folder+'\RR\PAN.tif')
+MS = read_TIFF('.\PAirMax\'+folder+'\RR\MS.tif')
+MS_LR = read_TIFF('.\PAirMax\'+folder+'\RR\MS_LR.tif')
 
-GroundTruth = read_image('.\PAirMax\GE_Lond_Urb\RR\GT.tif')
+GroundTruth = read_image('.\PAirMax\'+folder+'\RR\GT.tif')
 
 print, "Brovey PanSharpening"
 Brovey, PAN, MS, I_BT, RATIO=4
@@ -20,9 +21,10 @@ print, "Adaptive Gram Schmidt PanSharpening"
 GSA, PAN, MS, MS_LR, I_GSA
 
 print, "Adaptive Gram Schmidt PanSharpening with Segmentation"
-k_means,MS, segmented, N_SEGM=6
 genLP, PAN, MS, MS_LR, I_LR_input
+k_means,MS, segmented, N_SEGM=6
 I_GS_segm = gs_segm(MS, PAN, I_LR_input, segmented)
+
 
 print, "Saving images"
 save_image,".\output\GS.tif",I_GS

@@ -28,7 +28,7 @@ if KEYWORD_SET(HAZE) then begin
     0.40*cgPercentiles(MS[2,*,*], Percentiles=.01),$
     0.05*cgPercentiles(MS[3,*,*], Percentiles=.01)]
   
-  for i=0,channels-1 do L[i,*,*] = replicate(l_k[i], [1, sizes])
+  for i=0,3 do L[i,*,*] = replicate(l_k[i], [1, sizes])
 endif
 
 ; -------- Calcolo di I_L ------------------------------------------------------
@@ -38,7 +38,7 @@ endif
   ; 2) Calcolo coefficienti w_k come minimizzazione MSE PAN e PAN_GAUSS
   num_elements = sizes[0] * sizes[1]
   PAN_flatten = reform(PAN_smooth, 1, num_elements)
-  MS_flatten = reform(MS, 4, num_elements)
+  MS_flatten = reform(MS, channels, num_elements)
   w_k = LA_LEAST_SQUARES(MS_flatten, PAN_flatten)
   
   ; 3) Media Pesata di MS con pesi w_k
