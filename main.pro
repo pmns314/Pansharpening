@@ -12,8 +12,12 @@ print, "Brovey PanSharpening"
 Brovey, PAN, MS, I_BT, RATIO=4
 print, "Brovey PanSharpening with Haze Correction"
 Brovey, PAN, MS, I_BT_H, RATIO=4, /HAZE
+
 print, "Gram Schmidt PanSharpening"
 GS, PAN, MS, I_GS
+
+print, "Adaptive Gram Schmidt PanSharpening"
+GSA, PAN, MS, MS_LR, I_GSA
 
 print, "Adaptive Gram Schmidt PanSharpening with Segmentation"
 k_means,MS, segmented, N_SEGM=6
@@ -24,5 +28,6 @@ print, "Saving images"
 save_image,".\output\GS.tif",I_GS
 save_image,".\output\BT.tif",I_BT
 save_image,".\output\BT_H.tif",I_BT_H
+save_image, ".\output\GSA.tif", I_GSA
 save_image,".\output\segm.tif",segmented
 save_image,".\output\GS_Segm.tif",I_GS_segm
