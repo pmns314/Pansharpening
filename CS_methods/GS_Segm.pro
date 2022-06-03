@@ -11,7 +11,7 @@ FUNCTION gs_segm, I_MS, PAN, I_LR_input, S
   size_I_MS = size(I_MS, /dimensions)
   channels = size_I_MS[0]
   
-  X = REFORM(I_LR_input, 1, size_I_MS[1], size_I_MS[2])
+  X = REFORM(PAN, 1, size_I_MS[1], size_I_MS[2])
   temp = fltarr(size_I_MS)
   for i=0,channels-1 do temp[i,*,*] = X
   I_PAN = temp
@@ -45,7 +45,7 @@ FUNCTION gs_segm, I_MS, PAN, I_LR_input, S
   
   ;DetailsHRPan = I_PAN - I_LR_input;
   DetailsHRPan = I_PAN - I_LR_input
-  
+ 
   ;Coeff = zeros(size(I_MS));
   Coeff = fltarr(size_I_MS)
   

@@ -26,3 +26,12 @@ PRO k_means_clustering, I_MS, n_segm
   ;S = reshape(IDX,[size(I_MS,1) size(I_MS,2)]);
   S = REFORM(IDX, [size_1,size_2])
 END
+
+base = widget_auto_base(title = 'Brovey Transform')
+wl = widget_slabel(base, prompt = 'Function: Brovey')
+sb = widget_base(base, /row, /frame)
+wp = widget_param(sb, prompt = 'Exponent', dt = 5, uvalue = 'value', /auto)
+
+sb = widget_base(base, /row, /frame)
+wf = widget_outfm(sb, uvalue = 'outf', /auto)
+result = auto_wid_mng(base)
