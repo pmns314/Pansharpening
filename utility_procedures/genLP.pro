@@ -22,11 +22,15 @@ num_elements = sizes[0] * sizes[1]
 MS_flatten = reform(MS, channels, num_elements)
 
 w_k = LA_LEAST_SQUARES(MS_LR_Exp, PAN_LR_flatten)
+;w_k = [1.2891, 1.3274, 0.5405, 0.9477, 0.0033]
+;w_k = LA_LEAST_SQUARES(MS_LR_flatten, PAN_LR_flatten)
 
 alpha = fltarr(channels+1, num_elements)
+;alpha = fltarr(channels, num_elements)
 for i=0,channels do alpha[i,*] = replicate(w_k[i], 1, num_elements)
 
 ones = replicate(1., 1, num_elements)
 output = total([MS_flatten, ones] * alpha, 1)
+;output = total(MS_flatten * alpha, 1)
 output = reform(output, sizes_PAN)
 end

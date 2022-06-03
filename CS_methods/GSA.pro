@@ -1,4 +1,4 @@
-pro gsa, image_PAN, image_MS, image_MS_LR, I_Fus_GSA
+pro gsa, image_PAN, image_MS, image_MS_LR, I_Fus_GSA, RATIO =ratio
 ; Each image has 4 channels (red, green, blue and nir) and a certain spatial resolution (size_X[1]*size_X[2])
 imageLR = float(image_MS)
 imageLR_LP = float(image_MS_LR)
@@ -18,15 +18,15 @@ imageLR_LP0 = remove_mean(imageLR_LP)
 imageHR0 = remove_mean(imageHR)
 
 ; Use a low pass filter based on the wavelet transform for the PAN image and downsample it by ratio
-ratio = 4
+if not KEYWORD_SET(RATIO) then ratio=4
 WT = wtn(imageHR0, ratio, /OVERWRITE)
 smoothed = fltarr(size_PAN)
-smoothed[0:256, 0:256] = WT[0:256, 0:256]
+smoothed[0:size_PAN[0]/2, 0:size_PAN[1]/2] = WT[0:size_PAN[0]/2, 0:size_PAN[1]/2]
 imageHR0 = wtn(smoothed, ratio, /INVERSE, /OVERWRITE)
 imageHR0 = congrid(imageHR0, size_PAN[0]/ratio, $
 size_PAN[1]/ratio, /INTERP)
 size_HR0 = size(imageHR0, /DIMENSIONS)
-save_image, "./output/wtn.tif", imageHR0
+
 
 ; Compute alpha coefficients
 one_matrix = make_array(size_MS_LR[1], size_MS_LR[2], /FLOAT, VALUE = 1)
