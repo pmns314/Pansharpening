@@ -1,6 +1,6 @@
 ; Main Script
 ; 
- ; Load Images
+; Load Images
 folder = 'GE_Lond_Urb'
 print, "Loading Image Files: " + folder
 PAN = read_TIFF('.\PAirMax\'+folder+'\RR\PAN.tif')
@@ -22,12 +22,8 @@ GSA, PAN, MS, MS_LR, I_GSA
 
 print, "Adaptive Gram Schmidt PanSharpening with Segmentation"
 k_means,MS, segmented, N_SEGM=5
-save_image,".\output\segm.tif",segmented
-
 genLP, PAN, MS, MS_LR, I_LR_input
-save_image,".\output\genLP.tif",I_LR_input
-
-I_GS_segm = gs_segm(MS, PAN, I_LR_input, segmented)
+gs_segm, PAN, MS, I_LR_input, segmented, I_GS_segm
 
 
 print, "Saving images"

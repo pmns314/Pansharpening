@@ -1,3 +1,9 @@
+; +
+; Procedure For handling Pansharpening through ENVI toolbar
+;
+;
+; :Author: Paolo Mansi, Alessia Carbone, Nina Brolich
+; -
 pro menu_pansharpening, ev
 
   widget_control, ev.id, get_uvalue = uvalue
