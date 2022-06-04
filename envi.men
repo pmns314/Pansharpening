@@ -1,0 +1,856 @@
+; ENVI MENU DEFINITION FILE - ENVI.MEN
+;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Copyright (c) 2007, ITT Visual Information Solutions ;
+; All rights reserved.                                 ;
+; Unauthorized reproduction prohibited.                ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+; this is the definition file for the menu in the ENVI
+; Display Window.  The format of this file is:
+;
+;  LEVEL {BUTTON NAME} [{UVALUE} {EVENT HANDLER PROCEDURE}] [{separator}]
+;
+;  where LEVEL is the level of the button
+;        BUTTON NAME is the name of the button on the menu,
+;        UVALUE is the string value placed in the uvalue of
+;          the button event, and
+;        EVENT HANDLER PROCEDURE is the name of the event
+;          handler called by the Xmanager.
+;
+;  A button with only LEVEL {BUTTON NAME} defined is assumed
+;  to be a menu button, with the button definitions following
+;  being the pull down "children" of the menu (with a LEVEL
+;  value one greater).
+;
+0 {File}
+  1 {Open Image File} {open envi file} {envi_menu_event}
+  1 {Open Vector File} {open vector file} {envi_menu_event}
+  1 {Open Remote File} {open remote file} {envi_menu_event}
+  1 {Open External File} {separator}
+  	2 {Landsat}
+      3 {Fast} {open eosat tm} {envi_menu_event}
+      3 {GeoTIFF} {open tiff} {envi_menu_event}
+      3 {GeoTIFF with Metadata} {open landsat metadata} {envi_menu_event}
+      3 {HDF} {open envi file} {envi_menu_event}
+      3 {NLAPS} {open nlaps} {envi_menu_event}
+      3 {MRLC} {open mrlc} {envi_menu_event}
+      3 {ACRES CCRS} {open acres ccrs} {envi_menu_event} {separator}
+      3 {ESA CEOS} {open esa tm} {envi_menu_event}
+    2 {SPOT}
+      3 {SPOT} {open spot} {envi_menu_event}
+      3 {GeoSPOT} {open envi file} {envi_menu_event}
+      3 {ACRES SPOT} {open acres spot} {envi_menu_event}
+      3 {Vegetation} {open spot vegetation} {envi_menu_event}
+      3 {DIMAP} {open dimap} {envi_menu_event}
+    2 {IKONOS}
+      3 {GeoTIFF} {open tiff ikonos} {envi_menu_event}
+      3 {NITF} {open nitf ikonos} {envi_menu_event}
+      3 {Open with RPC Positioning} {open rpc ikonos} {envi_menu_event}
+    2 {QuickBird}
+      3 {GeoTIFF} {open tiff quickbird} {envi_menu_event}
+      3 {NITF} {open nitf quickbird} {envi_menu_event}
+      3 {Open with RPC Positioning} {open rpc quickbird} {envi_menu_event}
+      3 {Mosaic Tiled QuickBird Product} {open qb_tile} {envi_menu_event}
+    2 {WorldView}
+      3 {GeoTIFF} {open tiff worldview} {envi_menu_event}
+      3 {NITF} {open nitf worldview} {envi_menu_event}
+      3 {Open with RPC Positioning} {open rpc worldview} {envi_menu_event}
+      3 {Mosaic Tiled WorldView Product} {open wv_tile} {envi_menu_event}
+    2 {OrbView-3}
+      3 {GeoTIFF} {open tiff orbview-3} {envi_menu_event}
+      3 {NITF} {open nitf orbview-3} {envi_menu_event}
+      3 {Open with RPC Positioning} {open rpc orbview-3} {envi_menu_event}
+    2 {GeoEye-1}
+      3 {GeoTIFF} {open tiff geoeye-1} {envi_menu_event}
+      3 {NITF} {open nitf geoeye-1} {envi_menu_event}
+      3 {Open with RPC Positioning} {open rpc geoeye-1} {envi_menu_event}
+    2 {IRS}
+      3 {Fast} {open eosat irs} {envi_menu_event}
+      3 {Super Structured} {open irs super} {envi_menu_event}
+    2 {AVHRR}
+      3 {KLMN/Level 1b} {open avhrr} {envi_menu_event}
+      3 {SHARP} {open esa sharp} {envi_menu_event}
+      3 {Quorum} {open quorum avhrr} {envi_menu_event}
+    2 {SeaWiFS}
+      3 {HDF} {open seawifs} {envi_menu_event}
+      3 {CEOS} {open seawifs} {envi_menu_event}
+    2 {EOS}
+      3 {ASTER} {open aster} {envi_menu_event}
+      3 {MODIS} {open modis} {envi_menu_event}
+    2 {EROS}
+      3 {Level 1A} {open eros_1a} {envi_menu_event}
+      3 {Level 1B (GeoTIFF)} {open eros_1b} {envi_menu_event}
+    2 {ENVISAT}
+      3 {AATSR} {open envisat} {envi_menu_event}
+      3 {ASAR} {open envisat} {envi_menu_event}
+      3 {MERIS} {open envisat} {envi_menu_event}
+    2 {ALOS}
+      3 {PRISM} {open alos} {envi_menu_event}
+      3 {Open PRISM with RPC Positioning} {open alos rpc} {envi_menu_event}
+      3 {AVNIR-2} {open alos} {envi_menu_event}
+      3 {PALSAR} {open alos} {envi_menu_event}
+    2 {CARTOSAT-1}
+      3 {GeoTIFF} {open tiff cartosat-1} {envi_menu_event}
+      3 {Open with RPC Positioning} {open rpc cartosat-1} {envi_menu_event}
+    2 {ADS40} {open ads40} {envi_menu_event}
+    2 {ATSR} {open atsr} {envi_menu_event}
+    2 {DMSP (NOAA)} {open dmsp ols} {envi_menu_event}
+    2 {FORMOSAT-2} {open formosat-2} {envi_menu_event}
+    2 {KOMPSAT-2} {open kompsat2} {envi_menu_event}
+    2 {RapidEye} {open rapideye} {envi_menu_event}
+    2 {Thermal} {separator}
+      3 {TIMS} {open tims} {envi_menu_event}
+      3 {MASTER} {open mas-50} {envi_menu_event}
+      3 {ENVISAT-AATSR} {open envisat} {envi_menu_event}
+      3 {ASTER} {open aster} {envi_menu_event}
+    2 {Radar}
+      3 {ALOS-PALSAR} {open alos} {envi_menu_event}
+      3 {COSMO-SkyMed} {open cosmoskymed} {envi_menu_event}
+      3 {ENVISAT-ASAR} {open envisat} {envi_menu_event}
+      3 {ERS} {open ers} {envi_menu_event}
+      3 {JERS} {open jers} {envi_menu_event}
+      3 {RADARSAT} {open radarsat} {envi_menu_event}
+      3 {TOPSAR} {open topsar} {envi_menu_event}
+    2 {Military}
+      3 {ADRG} {open adrg} {envi_menu_event}
+      3 {CADRG} {open cadrg} {envi_menu_event}
+      3 {CIB} {open cib} {envi_menu_event}
+      3 {NITF}
+        4 {NITF} {open nitf} {envi_menu_event}
+        4 {View NITF Metadata} {view nitf header} {envi_menu_event}
+      3 {TFRD} {open tfrd} {envi_menu_event}
+    2 {Digital Elevation}
+      3 {DTED} {open dted} {envi_menu_event}
+      3 {USGS DEM} {open dem} {envi_menu_event}
+      3 {USGS SDTS DEM} {open sdts dem} {envi_menu_event}
+      3 {SRTM DEM} {open srtm dem} {envi_menu_event}
+    2 {USGS}
+      3 {DRG} {open drg} {envi_menu_event}
+      3 {DOQ} {open doq} {envi_menu_event}
+      3 {DEM} {open dem} {envi_menu_event} {separator}
+      3 {SDTS DEM} {open sdts dem} {envi_menu_event}
+    2 {LAS LIDAR}
+      3 {View LAS Header} {view las header} {envi_menu_event}
+      3 {Convert LAS Data} {open las_lidar} {envi_menu_event}
+    2 {IP Software} {separator}
+      3 {ArcView Raster} {open envi file} {envi_menu_event}
+      3 {ERDAS IMAGINE} {open erdas} {envi_menu_event}
+      3 {ER Mapper} {open ermapper} {envi_menu_event}
+      3 {ECW} {open ecw} {envi_menu_event}
+      3 {PCI} {open pci} {envi_menu_event}
+      3 {ESRI GRID} {open esri grid} {envi_menu_event}
+    2 {Generic Formats}
+      3 {ASCII} {open ascii} {envi_menu_event}
+      3 {BMP} {open bmp} {envi_menu_event}
+      3 {HDF} {open hdf} {envi_menu_event}
+      3 {JPEG} {open jpeg} {envi_menu_event}
+      3 {JPEG2000} {open jpeg2000} {envi_menu_event}
+      3 {MrSID} {open mrsid} {envi_menu_event}
+      3 {PDS} {open pds} {envi_menu_event}
+      3 {PICT} {open pict} {envi_menu_event}
+      3 {PNG} {open png} {envi_menu_event}
+      3 {SRF} {open srf} {envi_menu_event}
+      3 {TIFF/GeoTIFF} {open tiff} {envi_menu_event}
+      3 {XWD} {open xwd} {envi_menu_event}
+  1 {Open Previous File}
+  1 {Launch ENVI Zoom} {launch zoom} {envi_menu_event} {separator}
+  1 {Edit ENVI Header} {edit header} {envi_menu_event} {separator}
+  1 {Generate Test Data} {generate image} {envi_menu_event} {separator}
+  1 {Data Viewer} {data viewer} {envi_menu_event}
+  1 {Save File As} {separator}
+    2 {ENVI Standard} {create file standard} {envi_menu_event}
+    2 {ENVI Meta} {create file meta} {envi_menu_event}
+    2 {ArcView Raster} {output to arcview} {envi_menu_event} {separator}
+    2 {ASCII} {output to ascii} {envi_menu_event}
+    2 {ER Mapper} {output to ermapper} {envi_menu_event}
+    2 {ERDAS IMAGINE} {output to erdas} {envi_menu_event}
+    2 {ESRI GRID} {output to grid} {envi_menu_event}
+    2 {JPEG2000} {output to jpeg2000} {envi_menu_event}
+    2 {NITF} {output to nitf} {envi_menu_event}
+    2 {PCI} {output to pci} {envi_menu_event}
+    2 {TIFF/GeoTIFF} {output to tiff} {envi_menu_event}
+  1 {Import from IDL Variable} {import from idl} {envi_menu_event} {separator}
+  1 {Export to IDL Variable} {export to idl} {envi_menu_event}
+  1 {Compile IDL Module} {compile module} {envi_menu_event}
+  1 {IDL CPU Parameters} {cpu params} {envi_menu_event}
+  1 {Tape Utilities} {separator}
+    2 {Read Known Tape Formats}
+      3 {Landsat MSS} {landsat mss tape} {envi_menu_event}
+      3 {Landsat TM} {landsat tm tape} {envi_menu_event}
+      3 {AVHRR} {avhrr tape} {envi_menu_event}
+      3 {SPOT} {spot tape} {envi_menu_event}
+      3 {AVIRIS} {aviris tape} {envi_menu_event}
+      3 {USGS DEM} {dem tape} {envi_menu_event}
+      3 {USGS DLG} {dlg tape} {envi_menu_event}
+      3 {NLAPS} {nlaps tape} {envi_menu_event}
+      3 {SIR-C CEOS} {sirc tape} {envi_menu_event}
+      3 {RADARSAT CEOS} {radarsat tape} {envi_menu_event}
+      3 {Generic CEOS} {ceos tape} {envi_menu_event}
+    2 {Read/Write ENVI Tapes}
+      3 {Read ENVI Tape} {read envi tape} {envi_menu_event}
+      3 {Write ENVI Files to Tape} {write envi tape} {envi_menu_event}
+    2 {Scan Tape and Customize Dump} {scan tape} {envi_menu_event}
+    2 {Dump Tape} {dump tape} {envi_menu_event}
+  1 {Scan Directory List} {scan} {envi_scan_event} {separator}
+  1 {Change Output Directory} {change dir} {envi_menu_event}
+  1 {Save Session to Script} {save to script} {envi_menu_event} {separator}
+  1 {Execute Startup Script} {execute script} {envi_menu_event}
+  1 {Restore Display Group} {restore display group} {envi_menu_event}
+  1 {ENVI Queue Manager} {queue manager} {envi_menu_event} {separator}
+  1 {ENVI Log Manager} {log manager} {envi_menu_event}
+  1 {Close All Files} {close all files} {envi_menu_event} {separator}
+  1 {Preferences} {edit config} {envi_menu_event} {separator}
+0 {Basic Tools}
+  1 {Resize Data (Spatial/Spectral)} {file resize} {envi_menu_event}
+  1 {Subset Data via ROIs} {subset via roi} {envi_menu_event}
+  1 {Rotate/Flip Data} {file rotate} {envi_menu_event}
+  1 {Layer Stacking} {layer stacking} {envi_menu_event}
+  1 {Convert Data (BSQ, BIL, BIP)} {file convert} {envi_menu_event} {separator}
+  1 {Stretch Data} {stretch data} {envi_menu_event}
+  1 {Statistics} {separator}
+    2 {Compute Statistics} {compute file stats} {envi_menu_event}
+    2 {View Statistics File} {view stats} {envi_menu_event}
+    2 {Sum Data Bands} {sum data bands} {envi_menu_event} {separator}
+    2 {Generate Random Sample} {separator}
+      3 {Using Ground Truth Classification Image} {random sample image} {envi_menu_event}
+      3 {Using Ground Truth ROIs} {random sample rois} {envi_menu_event}
+  1 {Spatial Statistics}
+    2 {Compute Global Spatial Statistics} {autocorrelation global} {envi_menu_event}
+    2 {Compute Local Spatial Statistics} {autocorrelation local} {envi_menu_event}
+  1 {Change Detection}
+    2 {Compute Difference Map} {cd grayscale} {envi_menu_event}
+    2 {Change Detection Statistics} {cd class} {envi_menu_event}
+  1 {Measurement Tool} {measurement tool} {envi_menu_event}
+  1 {Band Math} {band math} {envi_menu_event} {separator}
+  1 {Spectral Math} {spectra math} {envi_menu_event}
+  1 {Segmentation Image} {image segmentation} {envi_menu_event} {separator}
+  1 {Region Of Interest} {separator}
+    2 {ROI Tool} {roi tool} {envi_menu_event}
+    2 {Restore Saved ROI File} {restore roi} {envi_menu_event} {separator}
+    2 {Save ROIs to File} {save roi} {envi_menu_event}
+    2 {Delete ROIs} {delete roi} {envi_menu_event}
+    2 {Export ROIs to EVF} {export roi to evf} {envi_menu_event} {separator}
+    2 {Export ROIs to n-D Visualizer} {export roi to nd} {envi_menu_event}
+    2 {Output ROIs to ASCII} {output roi to ascii} {envi_menu_event}
+    2 {Reconcile ROIs} {reconcile roi} {envi_menu_event} {separator}
+    2 {Reconcile ROIs via Map} {reconcile roi map} {envi_menu_event}
+    2 {Band Threshold to ROI} {threshold roi} {envi_menu_event} {separator}
+    2 {Create Class Image from ROIs} {create image from rois} {envi_menu_event}
+    2 {Create Buffer Zone from ROIs} {buffer zone from rois} {envi_menu_event}
+    2 {Compute ROI Separability} {roi separability} {envi_menu_event} {}
+  1 {Mosaicking}
+    2 {Pixel Based} {mosaic reg} {envi_menu_event}
+    2 {Georeferenced} {mosaic geo} {envi_menu_event}
+    2 {Tiled QuickBird Product} {open qb_tile} {envi_menu_event} {}
+    2 {Tiled WorldView Product} {open wv_tile} {envi_menu_event} 
+  1 {Masking}
+    2 {Build Mask} {build mask} {envi_menu_event}
+    2 {Apply Mask} {apply mask} {envi_menu_event}
+  1 {Preprocessing} {separator}
+   2 {Calibration Utilities}
+      3 {AVHRR} {calibrate avhrr} {envi_menu_event}
+      3 {Landsat Calibration} {tm calibration} {envi_menu_event}
+      3 {QuickBird Radiance} {qb calibration} {envi_menu_event}
+      3 {WorldView Radiance} {wv calibration} {envi_menu_event}
+      3 {FLAASH} {flaash} {envi_menu_event} {separator}
+      3 {QUick Atmospheric Correction} {quac} {envi_menu_event}
+      3 {Flat Field} {flat field} {envi_menu_event} {separator}
+      3 {Log Residuals} {log residuals} {envi_menu_event}
+      3 {IAR Reflectance} {avg value index} {envi_menu_event}
+      3 {Empirical Line}
+        4 {Compute Factors and Calibrate} {eline spectra} {envi_menu_event}
+        4 {Calibrate Using Existing Factors} {eline from ascii} {envi_menu_event}
+      3 {Thermal Atm Correction} {thermal atm correction} {envi_menu_event} {}
+      3 {TIMS Radiance} {tims calibration} {envi_menu_event}
+      3 {Calculate Emissivity}
+        4 {Reference Channel} {emittance ref chan} {envi_menu_event}
+        4 {Emissivity Normalization} {emittance max temp} {envi_menu_event}
+        4 {Alpha Residuals} {emittance alpha residual} {envi_menu_event}
+    2 {General Purpose Utilities}
+      3 {Replace Bad Lines} {replace bad lines} {envi_menu_event}
+      3 {Dark Subtract} {dark subtract} {envi_menu_event}
+      3 {Apply Gain and Offset} {gainoff} {envi_menu_event}
+      3 {Destripe} {destripe} {envi_menu_event}
+      3 {Cross-Track Illumination Correction} {cross track} {envi_menu_event}
+      3 {Convert Complex Data} {convert complex} {envi_menu_event} {separator}
+      3 {Convert Vax to IEEE} {vax to ieee} {envi_menu_event}
+    2 {Data-Specific Utilities}
+      3 {View HDF Global Attributes} {view hdf globals} {envi_menu_event}
+      3 {View HDF Dataset Attributes} {view hdf datasets} {envi_menu_event}
+      3 {View NITF Metadata}{view nitf header} {envi_menu_event}
+      3 {ASTER} {separator}
+        4 {Build Geometry File} {aster build geometry} {envi_menu_event}
+        4 {Georeference Data} {georef aster} {envi_menu_event}
+        4 {Orthorectify ASTER} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify ASTER with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {AVHRR}
+        4 {Display Header Information} {display header avhrr} {envi_menu_event}
+        4 {Calibrate Data} {calibrate avhrr} {envi_menu_event} {separator}
+        4 {Build Geometry File} {avhrr build geometry} {envi_menu_event}
+        4 {Georeference Data} {georef avhrr} {envi_menu_event}
+        4 {Compute Sea Surface Temperature} {sea surface temp} {envi_menu_event}
+      3 {CARTOSAT-1}
+        4 {Orthorectify CARTOSAT-1} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify CARTOSAT-1 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {KOMPSAT-2}
+        4 {Orthorectify KOMPSAT-2} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify KOMPSAT-2 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {ENVISAT}
+        4 {Georeference AATSR} {georef envisat} {envi_menu_event}
+        4 {Georeference ASAR} {georef envisat} {envi_menu_event}
+        4 {Georeference MERIS} {georef envisat} {envi_menu_event}
+      3 {IKONOS}
+        4 {Orthorectify IKONOS} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify IKONOS with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {Landsat MSS}
+        4 {Deskew} {deskew} {envi_menu_event}
+        4 {Aspect} {aspect} {envi_menu_event}
+        4 {Landsat Calibration} {tm calibration} {envi_menu_event}
+      3 {Landsat TM}
+        4 {Landsat Calibration} {tm calibration} {envi_menu_event}
+      3 {MODIS}
+        4 {Georeference Data} {georef modis} {envi_menu_event}
+      3 {OrbView-3}
+        4 {Orthorectify OrbView-3} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify OrbView-3 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {GeoEye-1}
+        4 {Orthorectify GeoEye-1} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify GeoEye-1 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {QuickBird}
+        4 {QuickBird Radiance} {qb calibration} {envi_menu_event}
+        4 {Orthorectify QuickBird} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify QuickBird with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {WorldView}
+        4 {WorldView Radiance} {wv calibration} {envi_menu_event}
+        4 {Orthorectify WorldView} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify WorldView with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {RADARSAT}
+        4 {Georeference RADARSAT} {georef radarsat} {envi_menu_event}
+      3 {RapidEye}
+        4 {Orthorectify RapidEye L1B} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify RapidEye L1B with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {SeaWiFS}
+        4 {HDF Build Geometry File} {seawifs geometry hdf} {envi_menu_event}
+        4 {HDF Georeference Data} {seawifs georef hdf} {envi_menu_event}
+        4 {CEOS Build Geometry File} {seawifs geometry ceos} {envi_menu_event} {}
+        4 {CEOS Georeference Data} {seawifs georef ceos} {envi_menu_event}
+      3 {SPOT}
+        4 {Build Geometry File} {spot build geometry} {envi_menu_event}
+        4 {Georeference Data} {spot georeference} {envi_menu_event}
+        4 {Orthorectify SPOT} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify SPOT with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {TIMS}
+        4 {Thermal Atm Correction} {thermal atm correction} {envi_menu_event}
+        4 {Radiance Calibration} {tims calibration} {envi_menu_event}
+      3 {Thermal IR}
+        4 {Thermal Atm Correction} {thermal atm correction} {envi_menu_event}
+        4 {Reference Channel Emissivity} {emittance ref chan} {envi_menu_event} {}
+        4 {Emissivity Normalization} {emittance max temp} {envi_menu_event}
+        4 {Alpha Residuals} {emittance alpha residual} {envi_menu_event}
+0 {Classification}
+  1 {Supervised}
+    2 {Parallelepiped} {parallel} {envi_menu_event}
+    2 {Minimum Distance} {minimum distance} {envi_menu_event}
+    2 {Mahalanobis Distance} {mahalanobis distance} {envi_menu_event}
+    2 {Maximum Likelihood} {maximum likelihood} {envi_menu_event}
+    2 {Spectral Angle Mapper} {sam} {envi_menu_event}
+    2 {Spectral Information Divergence} {sid} {envi_menu_event}
+    2 {Binary Encoding} {binary encoding} {envi_menu_event}
+    2 {Neural Net} {neural net classifier} {envi_menu_event} {separator}
+    2 {Support Vector Machine} {svm tool} {envi_menu_event}
+  1 {Unsupervised}
+    2 {IsoData} {isodata} {envi_menu_event}
+    2 {K-Means} {k-means} {envi_menu_event}
+  1 {Decision Tree}
+    2 {Build New Decision Tree} {new decision tree} {envi_menu_event}
+    2 {Edit Existing Decision Tree} {edit decision tree} {envi_menu_event}
+    2 {Execute Existing Decision Tree} {execute decision tree} {envi_menu_event}
+  1 {Endmember Collection} {endmember} {envi_menu_event}
+  1 {Create Class Image from ROIs} {create image from rois} {envi_menu_event}
+  1 {Post Classification} {separator}
+    2 {Assign Class Colors} {assign class colors} {envi_menu_event}
+    2 {Rule Classifier} {class rule} {envi_menu_event}
+    2 {Class Statistics} {class stats} {envi_menu_event}
+    2 {Change Detection Statistics} {cd class} {envi_menu_event}
+    2 {Confusion Matrix}
+      3 {Using Ground Truth Image} {ground truth image} {envi_menu_event}
+      3 {Using Ground Truth ROIs} {ground truth rois} {envi_menu_event}
+    2 {ROC Curves}
+      3 {Using Ground Truth Image} {roc ground truth image} {envi_menu_event}
+      3 {Using Ground Truth ROIs} {roc ground truth rois} {envi_menu_event}
+    2 {Generate Random Sample}
+      3 {Using Ground Truth Image} {random sample image} {envi_menu_event}
+      3 {Using Ground Truth ROIs} {random sample rois} {envi_menu_event}
+    2 {Majority/Minority Analysis} {class majority} {envi_menu_event} {}
+    2 {Clump Classes} {clump} {envi_menu_event}
+    2 {Sieve Classes} {sieve} {envi_menu_event}
+    2 {Combine Classes} {combine classes} {envi_menu_event}
+    2 {Overlay Classes} {class overlay} {envi_menu_event}
+    2 {Buffer Zone Image} {class buffer zone} {envi_menu_event} {separator}
+    2 {Segmentation Image} {class segmentation} {envi_menu_event}
+    2 {Classification to Vector} {raster to vector} {envi_menu_event}
+0 {Transform}
+  1 {Image Sharpening}
+    2 {HSV} {sharpen ihs} {envi_menu_event}
+    2 {Color Normalized (Brovey)} {sharpen cn} {envi_menu_event}
+    2 {Gram-Schmidt Spectral Sharpening} {gs sharpen} {envi_menu_event} {}
+    2 {PC Spectral Sharpening} {pc sharpen} {envi_menu_event}
+    2 {CN Spectral Sharpening} {sharpen cn spectral} {envi_menu_event}
+  1 {Band Ratios} {band ratios} {envi_menu_event} {separator}
+  1 {Principal Components}
+    2 {Forward PC Rotation}
+      3 {Compute New Statistics and Rotate} {pc covariance} {envi_menu_event}
+      3 {PC Rotation from Existing Stats} {pc rotate forward} {envi_menu_event}
+    2 {Inverse PC Rotation} {pc rotate inverse} {envi_menu_event}
+  1 {Independent Components}
+    2 {Forward IC Rotation}
+      3 {Compute New Stats and Rotate} {ica forward new stats} {envi_menu_event}
+      3 {IC Rotation from Existing Stats} {ica forward existing stats} {envi_menu_event}
+      3 {IC Rotation from Existing Transform} {ica forward existing transform} {envi_menu_event}
+    2 {Inverse IC Rotation} {ica inverse} {envi_menu_event}
+  1 {MNF Rotation}
+    2 {Forward MNF}
+      3 {Estimate Noise Statistics from Data} {mnf shift} {envi_menu_event}
+      3 {Previous Noise Statistics} {mnf previous} {envi_menu_event}
+      3 {Noise Statistics from Dark Data} {mnf dark} {envi_menu_event}
+    2 {Inverse MNF Transform} {mnf inverse} {envi_menu_event}
+    2 {Apply Forward MNF to Spectra} {mnf spectra forward} {envi_menu_event} {}
+    2 {Apply Inverse MNF to Spectra} {mnf spectra inverse} {envi_menu_event}
+  1 {Color Transforms}
+    2 {RGB to HSV} {rgb to hsv} {envi_menu_event}
+    2 {RGB to HLS} {rgb to hls} {envi_menu_event}
+    2 {RGB to HSV (USGS Munsell)} {munsell rgb to hsv} {envi_menu_event}
+    2 {HSV to RGB} {hsv to rgb} {envi_menu_event} {separator}
+    2 {HLS to RGB} {hls to rgb} {envi_menu_event}
+    2 {HSV to RGB (USGS Munsell)} {munsell hsv to rgb} {envi_menu_event}
+  1 {Decorrelation Stretch} {decor stretch} {envi_menu_event} {separator}
+  1 {Photographic Stretch} {photo stretch} {envi_menu_event}
+  1 {Saturation Stretch} {saturation stretch} {envi_menu_event}
+  1 {Synthetic Color Image} {synthetic color image} {envi_menu_event}
+  1 {NDVI} {ndvi} {envi_menu_event} {separator}
+  1 {Tasseled Cap} {tasseled cap} {envi_menu_event}
+0 {Filter}
+  1 {Convolutions and Morphology} {convolution tool} {envi_menu_event}
+  1 {Texture} {separator}
+    2 {Occurrence Measures} {texture occurrence} {envi_menu_event}
+    2 {Co-occurrence Measures} {texture co-occurrence} {envi_menu_event}
+  1 {Adaptive}
+    2 {Lee}  {lee filter} {envi_menu_event}
+    2 {Enhanced Lee} {enhanced lee filter} {envi_menu_event}
+    2 {Frost} {frost filter} {envi_menu_event} {separator}
+    2 {Enhanced Frost} {enhanced frost filter} {envi_menu_event}
+    2 {Gamma} {gamma filter} {envi_menu_event} {separator}
+    2 {Kuan} {kuan filter} {envi_menu_event}
+    2 {Local Sigma}  {local sigma filter} {envi_menu_event}
+    2 {Bit Errors} {bit errors filter} {envi_menu_event}
+  1 {FFT Filtering}
+    2 {Forward FFT} {forward fft} {envi_menu_event}
+    2 {Filter Definition} {filter definition} {envi_menu_event}
+    2 {Inverse FFT} {inverse fft} {envi_menu_event}
+0 {Spectral}
+  1 {SPEAR Tools}
+    2 {Anomaly Detection} {SPEAR anomaly} {envi_menu_event}
+    2 {Change Detection} {SPEAR change} {envi_menu_event}
+    2 {Google Earth Bridge} {SPEAR google_earth} {envi_menu_event}
+    2 {Image-to-Map Registration} {SPEAR image_to_map} {envi_menu_event}
+    2 {Independent Component Analysis} {SPEAR ica} {envi_menu_event}
+    2 {LOC - Roads} {SPEAR loc_roads} {envi_menu_event}
+    2 {LOC - Water} {SPEAR loc_water} {envi_menu_event}
+    2 {Metadata Browser} {SPEAR metadata} {envi_menu_event}
+    2 {Orthorectification} {SPEAR ortho} {envi_menu_event}
+    2 {Pan Sharpening} {SPEAR pansharp} {envi_menu_event}
+    2 {Relative Water Depth} {SPEAR water_depth} {envi_menu_event}
+    2 {Spectral Analogues} {SPEAR analogues} {envi_menu_event}
+    2 {TERCAT} {SPEAR tercat} {envi_menu_event}
+    2 {Vegetation Delineation} {SPEAR veg_delineation} {envi_menu_event}
+    2 {Vertical Stripe Removal} {SPEAR destripe} {envi_menu_event}
+    2 {Watercraft Finder} {SPEAR watercraft} {envi_menu_event}
+  1 {Target Detection Wizard} {target detection} {envi_menu_event} {}
+  1 {Spectral Libraries} {separator}
+    2 {Spectral Library Viewer} {spec lib view} {envi_menu_event}
+    2 {Spectral Library Resampling} {resample spec lib} {envi_menu_event}
+    2 {Spectral Library Builder} {build spec lib} {envi_menu_event}
+  1 {Spectral Slices}
+    2 {Horizontal Slice} {horizontal slice} {envi_menu_event}
+    2 {Vertical Slice} {vertical slice} {envi_menu_event}
+    2 {Arbitrary Slice} {arbitrary slice} {envi_menu_event}
+  1 {MNF Rotation} {separator}
+    2 {Forward MNF}
+      3 {Estimate Noise Statistics from Data} {mnf shift} {envi_menu_event}
+      3 {Previous Noise Statistics} {mnf previous} {envi_menu_event}
+      3 {Noise Statistics from Dark Data} {mnf dark} {envi_menu_event}
+    2 {Inverse MNF Transform} {mnf inverse} {envi_menu_event}
+    2 {Apply Forward MNF to Spectra} {mnf spectra forward} {envi_menu_event} {}
+    2 {Apply Inverse MNF to Spectra} {mnf spectra inverse} {envi_menu_event}
+  1 {Pixel Purity Index}
+    2 {[FAST] New Output Band} {fast ppi new} {envi_menu_event}
+    2 {[FAST] Existing Output Band} {fast ppi existing} {envi_menu_event}
+    2 {New Output Band} {ppi new} {envi_menu_event} {separator}
+    2 {Existing Output Band} {ppi existing} {envi_menu_event}
+  1 {n-Dimensional Visualizer}
+    2 {Visualize with New Data} {new n-d} {envi_menu_event}
+    2 {Visualize with Previously Saved Data} {previous n-d} {envi_menu_event}
+    2 {Auto Cluster} {precluster n-d} {envi_menu_event} {separator}
+  1 {Mapping Methods}
+    2 {Binary Encoding} {binary encoding} {envi_menu_event}
+    2 {Spectral Angle Mapper} {sam} {envi_menu_event}
+    2 {Spectral Information Divergence} {sid} {envi_menu_event}
+    2 {LS-Fit (Linear Band Prediction)} {separator}
+      3 {Predict with New Statistics} {lsfit band new} {envi_menu_event}
+      3 {Predict from Existing Stats} {lsfit band exist} {envi_menu_event}
+    2 {Linear Spectral Unmixing} {unmix} {envi_menu_event}
+    2 {Matched Filtering} {matched filter} {envi_menu_event}
+    2 {Mixture Tuned Matched Filtering} {mt matched filter} {envi_menu_event}
+    2 {Constrained Energy Minimization} {cem} {envi_menu_event}
+    2 {Adaptive Coherence Estimator} {ace} {envi_menu_event}
+    2 {Orthogonal Subspace Projection} {osp} {envi_menu_event}
+    2 {Continuum Removal} {continuum removal} {envi_menu_event} {separator}
+    2 {Spectral Feature Fitting} {spectral feature} {envi_menu_event}
+    2 {Multi Range SFF}
+      3 {Use New Ranges} {multi range sff new} {envi_menu_event}
+      3 {Use Previous Ranges} {multi range sff previous} {envi_menu_event}
+    2 {Endmember Collection} {endmember} {envi_menu_event} {separator}
+  1 {Vegetation Analysis} {}
+    2 {Vegetation Index Calculator} {veg indices} {envi_menu_event}
+    2 {Agricultural Stress} {veg wizard ag} {envi_menu_event} {}
+    2 {Fire Fuel} {veg wizard fuel} {envi_menu_event}
+    2 {Forest Health} {veg wizard forest} {envi_menu_event}
+  1 {Vegetation Suppression} {veg suppression} {envi_menu_event}
+  1 {SAM Target Finder with BandMax} {bandmax wizard} {envi_menu_event} {}
+  1 {RX Anomaly Detection } {rxd anomaly} {envi_menu_event} {}
+  1 {Spectral Hourglass Wizard} {endmember mapping wizard} {envi_menu_event} {}
+  1 {Automated Spectral Hourglass} {endmember mapping auto} {envi_menu_event}
+  1 {Spectral Analyst} {spectrum identifier} {envi_menu_event}
+  1 {Multi Range SFF}
+    2 {Define New Ranges} {multi range sff define} {envi_menu_event}
+    2 {Edit Previous Ranges} {multi range sff edit} {envi_menu_event}
+  1 {SMACC Endmember Extraction} {smacc} {envi_menu_event} {separator}
+  1 {Spectral Math} {spectra math} {envi_menu_event} {separator}
+  1 {Spectral Resampling} {spectral resample file} {envi_menu_event}
+  1 {Gram-Schmidt Spectral Sharpening} {gs sharpen} {envi_menu_event} {}
+  1 {PC Spectral Sharpening} {pc sharpen} {envi_menu_event}
+  1 {CN Spectral Sharpening} {sharpen cn spectral} {envi_menu_event}
+  1 {EFFORT Polishing} {effort} {envi_menu_event} {separator}
+  1 {FLAASH} {flaash} {envi_menu_event}
+  1 {QUick Atmospheric Correction} {quac} {envi_menu_event}
+  1 {Build 3D Cube} {cube 3d} {envi_menu_event} {separator}
+  1 {Preprocessing} {separator}
+    2 {Calibration Utilities}
+      3 {AVHRR} {calibrate avhrr} {envi_menu_event}
+      3 {Landsat Calibration} {tm calibration} {envi_menu_event}
+      3 {QuickBird Radiance} {qb calibration} {envi_menu_event}
+      3 {WorldView Radiance} {wv calibration} {envi_menu_event}
+      3 {FLAASH} {flaash} {envi_menu_event} {separator}
+      3 {QUick Atmospheric Correction} {quac} {envi_menu_event}
+      3 {Flat Field} {flat field} {envi_menu_event} {separator}
+      3 {Log Residuals} {log residuals} {envi_menu_event}
+      3 {IAR Reflectance} {avg value index} {envi_menu_event}
+      3 {Empirical Line}
+        4 {Compute Factors and Calibrate} {eline spectra} {envi_menu_event}
+        4 {Calibrate Using Existing Factors} {eline from ascii} {envi_menu_event}
+      3 {Thermal Atm Correction} {thermal atm correction} {envi_menu_event} {}
+      3 {TIMS Radiance} {tims calibration} {envi_menu_event}
+      3 {Calculate Emissivity}
+        4 {Reference Channel} {emittance ref chan} {envi_menu_event}
+        4 {Emissivity Normalization} {emittance max temp} {envi_menu_event}
+        4 {Alpha Residuals} {emittance alpha residual} {envi_menu_event}
+    2 {General Purpose Utilities}
+      3 {Replace Bad Lines} {replace bad lines} {envi_menu_event}
+      3 {Dark Subtract} {dark subtract} {envi_menu_event}
+      3 {Apply Gain and Offset} {gainoff} {envi_menu_event}
+      3 {Destripe} {destripe} {envi_menu_event}
+      3 {Cross-Track Illumination Correction} {cross track} {envi_menu_event}
+      3 {Convert Complex Data} {convert complex} {envi_menu_event} {separator}
+      3 {Convert Vax to IEEE} {vax to ieee} {envi_menu_event}
+    2 {Data-Specific Utilities}
+      3 {View HDF Global Attributes} {view hdf globals} {envi_menu_event}
+      3 {View HDF Dataset Attributes} {view hdf datasets} {envi_menu_event}
+      3 {View NITF Metadata}{view nitf header} {envi_menu_event}
+      3 {ASTER} {separator}
+        4 {Build Geometry File} {aster build geometry} {envi_menu_event}
+        4 {Georeference Data} {georef aster} {envi_menu_event}
+        4 {Orthorectify ASTER} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify ASTER with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {AVHRR}
+        4 {Display Header Information} {display header avhrr} {envi_menu_event}
+        4 {Calibrate Data} {calibrate avhrr} {envi_menu_event} {separator}
+        4 {Build Geometry File} {avhrr build geometry} {envi_menu_event}
+        4 {Georeference Data} {georef avhrr} {envi_menu_event}
+        4 {Compute Sea Surface Temperature} {sea surface temp} {envi_menu_event}
+      3 {CARTOSAT-1}
+        4 {Orthorectify CARTOSAT-1} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify CARTOSAT-1 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {ENVISAT}
+        4 {Georeference AATSR} {georef envisat} {envi_menu_event}
+        4 {Georeference ASAR} {georef envisat} {envi_menu_event}
+        4 {Georeference MERIS} {georef envisat} {envi_menu_event}
+      3 {IKONOS}
+        4 {Orthorectify IKONOS} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify IKONOS with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {Landsat MSS}
+        4 {Deskew} {deskew} {envi_menu_event}
+        4 {Aspect} {aspect} {envi_menu_event}
+        4 {Landsat Calibration} {tm calibration} {envi_menu_event}
+      3 {Landsat TM}
+        4 {Landsat Calibration} {tm calibration} {envi_menu_event}
+      3 {MODIS}
+        4 {Georeference Data} {georef modis} {envi_menu_event}
+      3 {OrbView-3}
+        4 {Orthorectify OrbView-3} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify OrbView-3 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {GeoEye-1}
+        4 {Orthorectify GeoEye-1} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify GeoEye-1 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {QuickBird}
+        4 {QuickBird Radiance} {qb calibration} {envi_menu_event}
+        4 {Orthorectify QuickBird} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify QuickBird with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {WorldView}
+        4 {WorldView Radiance} {wv calibration} {envi_menu_event}
+        4 {Orthorectify WorldView} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify WorldView with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {RADARSAT}
+        4 {Georeference RADARSAT} {georef radarsat} {envi_menu_event}
+      3 {RapidEye}
+        4 {Orthorectify RapidEye L1B} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify RapidEye L1B with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {SeaWiFS}
+        4 {HDF Build Geometry File} {seawifs geometry hdf} {envi_menu_event}
+        4 {HDF Georeference Data} {seawifs georef hdf} {envi_menu_event}
+        4 {CEOS Build Geometry File} {seawifs geometry ceos} {envi_menu_event} {}
+        4 {CEOS Georeference Data} {seawifs georef ceos} {envi_menu_event}
+      3 {SPOT}
+        4 {Build Geometry File} {spot build geometry} {envi_menu_event}
+        4 {Georeference Data} {spot georeference} {envi_menu_event}
+        4 {Orthorectify SPOT} {ortho rpc} {envi_menu_event}
+        4 {Orthorectify SPOT with Ground Control} {ortho rpc gcp} {envi_menu_event}
+      3 {TIMS}
+        4 {Thermal Atm Correction} {thermal atm correction} {envi_menu_event}
+        4 {Radiance Calibration} {tims calibration} {envi_menu_event}
+      3 {Thermal IR}
+        4 {Thermal Atm Correction} {thermal atm correction} {envi_menu_event}
+        4 {Reference Channel Emissivity} {emittance ref chan} {envi_menu_event} {}
+        4 {Emissivity Normalization} {emittance max temp} {envi_menu_event}
+        4 {Alpha Residuals} {emittance alpha residual} {envi_menu_event}
+0 {Map}
+  1 {Registration}
+    2 {Select GCPs: Image to Image} {register0} {envi_menu_event}
+    2 {Select GCPs: Image to Map} {register1} {envi_menu_event}
+    2 {Warp from GCPs: Image to Image} {register2} {envi_menu_event} {}
+    2 {Warp from GCPs: Image to Map} {register3} {envi_menu_event}
+    2 {Automatic Registration: Image to Image} {auto register} {envi_menu_event} {separator}
+  1 {Rigorous Orthorectification} {ortho blixt} {envi_menu_event}
+  1 {Orthorectification}
+    2 {Generic RPC and RSM}
+      3 {Orthorectify using RPC or RSM} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify using RPC or RSM with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {ASTER}
+      3 {Orthorectify ASTER} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify ASTER with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {IKONOS}
+      3 {Orthorectify IKONOS} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify IKONOS with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {OrbView-3}
+      3 {Orthorectify OrbView-3} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify OrbView-3 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {GeoEye-1}
+      3 {Orthorectify GeoEye-1} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify GeoEye-1 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {QuickBird}
+      3 {Orthorectify QuickBird} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify QuickBird with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {WorldView}
+      3 {Orthorectify WorldView} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify WorldView with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {SPOT}
+      3 {Orthorectify SPOT} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify SPOT with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {CARTOSAT-1}
+      3 {Orthorectify CARTOSAT-1} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify CARTOSAT-1 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {FORMOSAT-2}
+      3 {Orthorectify FORMOSAT-2} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify FORMOSAT-2 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {KOMPSAT-2}
+      3 {Orthorectify KOMPSAT-2} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify KOMPSAT-2 with Ground Control} {ortho rpc gcp} {envi_menu_event}
+    2 {RapidEye}
+      3 {Orthorectify RapidEye L1B} {ortho rpc} {envi_menu_event}
+      3 {Orthorectify RapidEye L1B with Ground Control} {ortho rpc gcp} {envi_menu_event}
+  1 {Mosaicking}
+    2 {Pixel Based} {mosaic reg} {envi_menu_event}
+    2 {Georeferenced} {mosaic geo} {envi_menu_event}
+    2 {Tiled QuickBird Product} {open qb_tile} {envi_menu_event} {}
+    2 {Tiled WorldView Product} {open wv_tile} {envi_menu_event} 
+  1 {Georeference from Input Geometry} {separator}
+    2 {Build GLT} {build glt} {envi_menu_event}
+    2 {Georeference from GLT} {georef from glt} {envi_menu_event}
+    2 {Georeference from IGM} {georef from igm} {envi_menu_event}
+    2 {Build Super GLT} {build sgl} {envi_menu_event} {separator}
+    2 {Georeference from Super GLT} {georef from sgl} {envi_menu_event}
+    2 {Super Georeference from IGM} {super georef from igm} {envi_menu_event}
+  1 {Georeference SPOT}
+    2 {Build Geometry File} {spot build geometry} {envi_menu_event}
+    2 {Georeference Data} {spot georeference} {envi_menu_event}
+  1 {Georeference SeaWiFS}
+    2 {HDF Build Geometry File} {seawifs geometry hdf} {envi_menu_event}
+    2 {HDF Georeference Data} {seawifs georef hdf} {envi_menu_event}
+    2 {CEOS Build Geometry File} {seawifs geometry ceos} {envi_menu_event} {}
+    2 {CEOS Georeference Data} {seawifs georef ceos} {envi_menu_event}
+  1 {Georeference ASTER}
+    2 {Build Geometry File} {aster build geometry} {envi_menu_event}
+    2 {Georeference Data} {georef aster} {envi_menu_event}
+  1 {Georeference AVHRR}
+    2 {Build Geometry File} {avhrr build geometry} {envi_menu_event}
+    2 {Georeference Data} {georef avhrr} {envi_menu_event}
+  1 {Georeference ENVISAT}
+    2 {Georeference AATSR} {georef envisat} {envi_menu_event}
+    2 {Georeference ASAR} {georef envisat} {envi_menu_event}
+    2 {Georeference MERIS} {georef envisat} {envi_menu_event}
+  1 {Georeference MODIS} {georef modis} {envi_menu_event}
+  1 {Georeference COSMO-SkyMed (DGM)} {georef cosmoskymed} {envi_menu_event}
+  1 {Georeference RADARSAT} {georef radarsat} {envi_menu_event}
+  1 {Build RPCs} {build rpcs} {envi_menu_event}
+  1 {Customize Map Projections} {customize proj} {envi_menu_event} {separator}
+  1 {Convert Map Projection} {convert map projection} {envi_menu_event}
+  1 {Layer Stacking} {layer stacking} {envi_menu_event}
+  1 {Map Coordinate Converter} {map converter} {envi_menu_event} {separator}
+  1 {ASCII Coordinate Conversion} {coord conv} {envi_menu_event}
+  1 {Merge Old "map_proj.txt" File} {merge map_proj} {envi_menu_event}
+  1 {GPS-Link} {gps link} {envi_menu_event} {separator}
+0 {Vector}
+  1 {Open Vector File} {open vector file} {envi_menu_event}
+  1 {Create New Vector Layer} {separator}
+    2 {Using Existing Vector Layer} {new vector layer0} {envi_menu_event}
+    2 {Using Raster Image File} {new vector layer1} {envi_menu_event}
+    2 {Using User Defined Parameters} {new vector layer2} {envi_menu_event}
+  1 {Create World Boundaries} {create world boundries} {envi_menu_event}
+  1 {Available Vectors List} {available vectors list} {envi_menu_event} {}
+  1 {Intelligent Digitizer} {intelligent linear} {envi_menu_event} {separator}
+  1 {Raster to Vector} {raster to vector} {envi_menu_event} {separator}
+  1 {Classification to Vector} {raster to vector} {envi_menu_event}
+  1 {Rasterize Point Data} {grid points} {envi_menu_event}
+  1 {Convert Contours to DEM} {evf contours to dem} {envi_menu_event}
+  1 {Convert ROI to DXF} {roi to dxf} {envi_menu_event} {separator}
+  1 {Convert ANN to DXF} {ann to dxf} {envi_menu_event}
+  1 {Convert EVF to DXF} {evf to dxf} {envi_menu_event}
+0 {Topographic}
+  1 {Open Topographic File}
+    2 {DTED} {open dted} {envi_menu_event}
+    2 {USGS DEM} {open dem} {envi_menu_event}
+    2 {USGS SDTS DEM} {open sdts dem} {envi_menu_event}
+    2 {SRTM DEM} {open srtm dem} {envi_menu_event}
+  1 {Topographic Modeling} {dem topo model} {envi_menu_event} {separator}
+  1 {Topographic Features} {dem topo features} {envi_menu_event}
+  1 {DEM Extraction} {separator}
+    2 {DEM Extraction Wizard}
+      3 {New} {dem extraction wizard new} {envi_menu_event}
+      3 {Use Previous File} {dem extraction wizard previous} {envi_menu_event}
+    2 {Select Stereo GCPs} {select stereo gcps} {envi_menu_event} {separator}
+    2 {Select Stereo Tie Points} {select stereo tie points} {envi_menu_event}
+    2 {Build Epipolar Images} {build epipolar} {envi_menu_event} {}
+    2 {Extract DEM} {extract dem} {envi_menu_event}
+    2 {Edit DEM Result} {dem edit band} {envi_menu_event} {separator}
+    2 {Stereo 3D Measurement} {stereo 3d measurement} {envi_menu_event}
+    2 {Epipolar 3D Cursor} {epipolar 3d cursor} {envi_menu_event}
+  1 {Create Hill Shade Image} {dem hillshade image} {envi_menu_event} {}
+  1 {Replace Bad Values} {dem replace bad data} {envi_menu_event}
+  1 {Rasterize Point Data} {grid points} {envi_menu_event}
+  1 {Convert Contours to DEM} {evf contours to dem} {envi_menu_event}
+  1 {3D SurfaceView} {3d surface} {envi_menu_event} {separator}
+0 {Radar}
+  1 {Open/Prepare Radar File}
+    2 {ALOS-PALSAR} {open alos} {envi_menu_event}
+    2 {COSMO-SkyMed} 
+      3 {Open COSMO-SkyMed Data} {open cosmoskymed} {envi_menu_event}
+      3 {Save COSMO-SkyMed Metadata to XML} {save cosmoskymed to xml} {envi_menu_event}
+    2 {ENVISAT-ASAR} {open envisat} {envi_menu_event}
+    2 {ERS} {open ers} {envi_menu_event}
+    2 {JERS} {open jers} {envi_menu_event}
+    2 {RADARSAT} {open radarsat} {envi_menu_event}
+    2 {TOPSAR} {open topsar} {envi_menu_event} 
+    2 {View AIRSAR/TOPSAR Header} {read airsar header} {envi_menu_event} {separator}
+    2 {View COSMO-SkyMed Header}
+      3 {Basic} {read cosmoskymed basic header} {envi_menu_event}
+      3 {Extended} {read cosmoskymed extended header} {envi_menu_event}
+    2 {View Generic CEOS Header} {read ceos header} {envi_menu_event}
+    2 {View RADARSAT Header} {read radarsat header} {envi_menu_event} 
+    2 {Synthesize AIRSAR Data} {airsar synthesize} {envi_menu_event} {separator}
+    2 {Synthesize SIR-C Data} {sirc synthesize} {envi_menu_event}
+    2 {Georeference COSMO-SkyMed (DGM)} {georef cosmoskymed} {envi_menu_event} {separator}
+    2 {Georeference RADARSAT} {georef radarsat} {envi_menu_event}
+  1 {Calibration}
+    2 {Beta Nought} {beta nought} {envi_menu_event}
+    2 {Sigma Nought} {sigma nought} {envi_menu_event}
+  1 {Antenna Pattern Correction} {antenna pattern} {envi_menu_event} {separator}
+  1 {Slant-to-Ground Range}
+    2 {AIRSAR} {airsar slant to ground} {envi_menu_event}
+    2 {RADARSAT} {radarsat slant to ground} {envi_menu_event}
+    2 {SIR-C} {sirc slant to ground} {envi_menu_event}
+    2 {Generic} {generic slant to ground} {envi_menu_event}
+  1 {Incidence Angle Image}
+    2 {AIRSAR} {airsar incidence} {envi_menu_event}
+    2 {RADARSAT} {radarsat incidence} {envi_menu_event}
+    2 {SIR-C} {sirc incidence} {envi_menu_event}
+    2 {Generic} {prompt incidence} {envi_menu_event}
+  1 {Adaptive Filters} {separator}
+    2 {Lee}  {lee filter} {envi_menu_event}
+    2 {Enhanced Lee} {enhanced lee filter} {envi_menu_event}
+    2 {Frost} {frost filter} {envi_menu_event} {separator}
+    2 {Enhanced Frost} {enhanced frost filter} {envi_menu_event}
+    2 {Gamma} {gamma filter} {envi_menu_event} {separator}
+    2 {Kuan} {kuan filter} {envi_menu_event}
+    2 {Local Sigma}  {local sigma filter} {envi_menu_event}
+    2 {Bit Errors} {bit errors filter} {envi_menu_event}
+  1 {Texture Filters}
+    2 {Occurrence Measures} {texture occurrence} {envi_menu_event}
+    2 {Co-occurrence Measures} {texture co-occurrence} {envi_menu_event}
+  1 {Synthetic Color Image} {synthetic color image} {envi_menu_event} {}
+  1 {Polarimetric Tools} {separator}
+    2 {Synthesize AIRSAR Data} {airsar synthesize} {envi_menu_event}
+    2 {Synthesize SIR-C Data} {sirc synthesize} {envi_menu_event}
+    2 {Extract Polarization Signatures} {separator}
+      3 {AIRSAR} {airsar polsig} {envi_menu_event}
+      3 {SIR-C} {sirc polsig} {envi_menu_event}
+      3 {View Saved Signatures} {polsig viewer} {envi_menu_event} {separator}
+    2 {Multilook Compressed Data}
+      3 {SIR-C Multi-Look} {sirc multilook} {envi_menu_event}
+    2 {Phase Image} {separator}
+      3 {AIRSAR} {airsar phase image} {envi_menu_event}
+      3 {SIR-C} {sirc phase image} {envi_menu_event}
+    2 {Pedestal Height Image}
+      3 {AIRSAR} {airsar pedestal} {envi_menu_event}
+      3 {SIR-C} {sirc pedestal} {envi_menu_event}
+    2 {AIRSAR Scattering Classification} {scatter class} {envi_menu_event}
+  1 {TOPSAR Tools}
+    2 {Open TOPSAR File} {open topsar} {envi_menu_event}
+    2 {Convert TOPSAR Data} {convert topsar} {envi_menu_event}
+    2 {DEM Replace Bad Value} {dem replace bad data} {envi_menu_event}
+0 {Window}
+  1 {Window Finder} {widget controller list} {envi_menu_event}
+  1 {Start New Display Window} {display window} {envi_menu_event} {separator}
+  1 {Start New Vector Window} {vector window} {envi_menu_event}
+  1 {Start New Plot Window} {new window0} {envi_menu_event}
+  1 {Available Files List} {available files list} {envi_menu_event} {separator}
+  1 {Available Bands List} {available bands list} {envi_menu_event}
+  1 {Available Vectors List} {available vectors list} {envi_menu_event}
+  1 {Remote Connection Manager} {remote connection manager} {envi_menu_event} {}
+  1 {Mouse Button Descriptions} {mouse descriptions} {envi_menu_event} {}
+  1 {Display Information} {display information} {envi_menu_event}
+  1 {Cursor Location/Value} {cursor location} {envi_menu_event}
+  1 {Point Collection} {point collection} {envi_menu_event}
+  1 {Maximize Open Displays} {sort displays} {envi_menu_event} {separator}
+  1 {Link Displays} {link displays} {envi_menu_event}
+  1 {Close All Display Windows} {close all displays} {envi_menu_event} {}
+  1 {Close All Plot Windows} {close all plot windows} {envi_menu_event}
+0 {Help}
+  1 {Start ENVI Help} {envi help} {envi_menu_event}
+  1 {Mouse Button Descriptions} {mouse descriptions} {envi_menu_event}
+  1 {About ENVI} {about envi} {envi_menu_event}
+0 {Pansharpening}
+1 {Brovey}{BT}{menu_pansharpening}
+1 {Gram-Schmidt}
+  2{Plain}{GS}{menu_pansharpening}
+  2{Adaptive}{GSA}{menu_pansharpening}
+  2{Segmentation}{GS_Segm}{menu_pansharpening}

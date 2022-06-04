@@ -1,7 +1,32 @@
+; +
+; gen_LP generates the Low Resolution version of the PAN image required for the calculation of the
+; segmentation-based version of the Gram-Schmidt algorithm
+;
+; :Uses: genLP, PAN, MS, MS_LR, output
+; 
+; :Params:
+;   PAN : in, required, type=uintarr
+;         The Panchromatic image
+;         
+;   MS : in, required, type=uintarr
+;         The multispectral image upscaled at PAN dimensions
+;         
+;   MS_LR : in, required, type=uintarr
+;         The original multispectral image
+;         
+;   output : out, required, type=fltarr
+;         The output Low resolution image
+; 
+; 
+; :Authors: Paolo Mansi, Alessia Carbone, Nina Brolich
+; -
 
-pro genLP, PAN, MS, MS_LR, output
-; Generate LowPass PAN Downsampled
-ratio = 4
+
+pro genLP, PAN, MS, MS_LR, output, RATIO=ratio
+
+if not KEYWORD_SET(RATIO) then ratio=4
+
+; Generate Smoothed PAN and Downsample it to a specific ratio
 PAN_LP = gaussian_smoothing(PAN, ratio)
 sizes_PAN = size(PAN, /dimensions)
 PAN_LP2 = rebin(PAN_LP, sizes_PAN/ratio, /SAMPLE);
@@ -22,15 +47,14 @@ num_elements = sizes[0] * sizes[1]
 MS_flatten = reform(MS, channels, num_elements)
 
 w_k = LA_LEAST_SQUARES(MS_LR_Exp, PAN_LR_flatten)
-;w_k = [1.2891, 1.3274, 0.5405, 0.9477, 0.0033]
-;w_k = LA_LEAST_SQUARES(MS_LR_flatten, PAN_LR_flatten)
 
+; Transform vector coefficients into a matrix
 alpha = fltarr(channels+1, num_elements)
-;alpha = fltarr(channels, num_elements)
 for i=0,channels do alpha[i,*] = replicate(w_k[i], 1, num_elements)
 
+; Multiplies the MS in input by the coefficients and averages along the bands to generate the
+; LP image
 ones = replicate(1., 1, num_elements)
 output = total([MS_flatten, ones] * alpha, 1)
-;output = total(MS_flatten * alpha, 1)
 output = reform(output, sizes_PAN)
 end

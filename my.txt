@@ -1,1 +1,0 @@
-!PATH = Expand_Path('+C:\Program Files\Exelis\IDL85\lib\coyote\') + ';' + !PATH
