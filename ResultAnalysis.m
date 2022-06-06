@@ -1,12 +1,12 @@
 clc, clear, close all
 %% Load Images
-folder = 'GE_Lond_Urb';
+folder = 'W4_Mexi_Nat';
 I_GT = double(imread(strcat('.\PAirMax\',folder,'\RR\GT.tif')));
 I_PAN = double(imread(strcat('.\PAirMax\',folder,'\RR\PAN.tif')));
 I_MS = double(imread(strcat('.\PAirMax\',folder,'\RR\MS.tif')));
 I_MS_LR = double(imread(strcat('.\PAirMax\',folder,'\RR\MS_LR.tif')));
 I_GT = double(I_GT);
-algorithms= ["BT", "GS", "GS_Segm"]
+algorithms= ["BT", "GS", "GSA", "GS_Segm"]
 
 
 
