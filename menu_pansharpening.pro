@@ -126,7 +126,7 @@ pro menu_pansharpening, ev
 
     k_means,MS, segmented, N_SEGM=n_segm
     genLP, PAN, MS, MS_LR, I_LR_input
-    newdata = gs_segm(MS, PAN, I_LR_input, segmented)
+    gs_segm, MS, PAN, I_LR_input, segmented, newdata
 
  
     s = size(newdata, /dimensions)
