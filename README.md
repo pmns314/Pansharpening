@@ -1,5 +1,5 @@
 # Pansharpening
-Repository For Remote Sensing Project on Panshaperning Techiques of Data Fusion
+Repository For Remote Sensing Project on Panshaperning Techniques of Data Fusion
 
 Developed by Paolo Mansi, Alessia Carbone, Nina Brolich
 
