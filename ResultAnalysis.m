@@ -6,7 +6,7 @@ I_PAN = double(imread(strcat('.\PAirMax\',folder,'\RR\PAN.tif')));
 I_MS = double(imread(strcat('.\PAirMax\',folder,'\RR\MS.tif')));
 I_MS_LR = double(imread(strcat('.\PAirMax\',folder,'\RR\MS_LR.tif')));
 I_GT = double(I_GT);
-algorithms= ["BT", "GS", "GSA", "GS_Segm"]
+algorithms= ["BT_H", "GS", "GSA", "GS_Segm"]
 
 
 
@@ -37,7 +37,7 @@ addpath(strcat(pwd, "\Quality_Indices"), '-end')
 for alg=algorithms 
     
 switch(alg)
-    case "BT"
+    case "BT_H"
         I_matlab = BroveyRegHazeMin(I_MS,I_PAN,ratio);
     case 'GS'
         I_matlab = GS(I_MS,I_PAN);
