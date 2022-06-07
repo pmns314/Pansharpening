@@ -5,6 +5,8 @@ Developed by Paolo Mansi, Alessia Carbone, Nina Brolich
 
 # How To Use
 
+## Dataset
+In order to run the provided _main.pro_ and _ResultAnalysis.m_ files, download the PAirMax dataset at the following link and place it in the same folder of the current project: https://resources.maxar.com/product-samples/pansharpening-benchmark-dataset
 ## IDL
 - Download the CoyoteIDL Library at the following link: http://www.idlcoyote.com/programs/zip_files/coyoteprograms.zip
 - Launch the command 
