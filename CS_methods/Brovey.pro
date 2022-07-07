@@ -51,12 +51,24 @@ if not KEYWORD_SET(RATIO) then ratio=4
 ;-----  Haze Correction --------------------------------------
 L = fltarr(sizes_MS)
 if KEYWORD_SET(HAZE) then begin
-  l_k = [0.95*cgPercentiles(MS[0,*,*], Percentiles=.01),$
-    0.45*cgPercentiles(MS[1,*,*], Percentiles=.01),$
-    0.40*cgPercentiles(MS[2,*,*], Percentiles=.01),$
-    0.05*cgPercentiles(MS[3,*,*], Percentiles=.01)]
   
-  for i=0,3 do L[i,*,*] = replicate(l_k[i], [1, sizes])
+  if (channels eq 4) then begin
+    
+    l_k = [0.95*compute_percentile(MS[0,*,*], Percentile=1),$
+      0.45*compute_percentile(MS[1,*,*], Percentile=1),$
+      0.40*compute_percentile(MS[2,*,*], Percentile=1),$
+      0.05*compute_percentile(MS[3,*,*], Percentile=1)]
+    
+    for i=0,3 do L[i,*,*] = replicate(l_k[i], [1, sizes])
+
+  endif else begin 
+    
+    for i=0,channels-1 do begin
+      L[i,*,*] = replicate(min(MS[i,*,*]), [1, sizes])
+    endfor
+ 
+  endelse
+  
 endif
 
 ; -------- I_L Calculation ------------------------------------------------------
